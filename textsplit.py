@@ -5,10 +5,13 @@ import re, sys
 from xml.sax.saxutils import escape
 
 text = sys.stdin.read()
-separator = '/| '
+separator = '/| |\n'
 
 if len(sys.argv) > 1 and len(sys.argv[1]) > 0:
 	separator = sys.argv[1]
+
+if '\n' not in separator:
+    separator += '|\n'
 
 text_splited_array = re.split(separator, text)
 
